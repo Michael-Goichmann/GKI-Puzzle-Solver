@@ -1,10 +1,10 @@
-//import static org.junit.Assert.assertArrayEquals;
+package puzzleSolver;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PuzzleSolverTest {
-
 	@Test
 	void checkInputTest() {
 		Puzzle goal = new Puzzle(new int[][]{{1, 2, 3}, {8, 0, 4}, {7, 6, 5}});
@@ -25,25 +25,7 @@ class PuzzleSolverTest {
 		assertFalse(ps.checkInput(missingCommas));
 	}
 
-	/**
-	 * Example test case for correct input parsing (not yet implemented)
-	 */
-
 	@Test
-	void heuristicsTest(){
-		Puzzle ps1 = new Puzzle(new int[][]{{7, 3, 2}, {8, 0, 4}, {1, 6, 5}});
-		Puzzle ps2 = new Puzzle(new int[][]{{8, 1, 2}, {0, 7, 3}, {6, 6, 4}});
-		Puzzle ps3 = new Puzzle(new int[][]{{5, 3, 1}, {0, 4, 8}, {7, 6, 2}});
-		Puzzle ps4 = new Puzzle(new int[][]{{1, 2, 3}, {8, 0, 4}, {7, 6, 5}});
-		Puzzle ps5 = new Puzzle(new int[][]{{8, 1, 2}, {7, 3, 5}, {6, 5, 4}});
-		assertEquals(4, PuzzleSolver.heuristic(ps1));
-		assertEquals(8, PuzzleSolver.heuristic(ps2));
-		assertEquals(7, PuzzleSolver.heuristic(ps3));
-		assertEquals(0, PuzzleSolver.heuristic(ps4));
-		assertEquals(9, PuzzleSolver.heuristic(ps5));
-	}
-
-	@Test 
 	void parseInputTest() {
 		Puzzle goal = new Puzzle(new int[][]{{1, 2, 3}, {8, 0, 4}, {7, 6, 5}});
 		PuzzleSolver ps = new PuzzleSolver(goal, "1,2,3,8,0,4,7,6,5");
@@ -51,6 +33,14 @@ class PuzzleSolverTest {
 			assertArrayEquals(goal.puzzle[i], ps.start.puzzle[i]);
 		}
 	}
-	
-	// TODO more test cases
+
+	@Test
+	void heuristicText() {
+		Puzzle goal = new Puzzle(new int[][]{{1, 2, 3}, {8, 0, 4}, {7, 6, 5}});
+		PuzzleSolver ps = new PuzzleSolver(goal, "1,2,3,8,0,4,7,6,5");
+		assertEquals(0, ps.heuristic(goal));
+
+		Puzzle allIncorrect = new Puzzle(new int[][]{{2, 3, 1}, {4, 8, 0}, {6, 5, 7}});
+		assertEquals(9, ps.heuristic(allIncorrect));
+	}
 }
