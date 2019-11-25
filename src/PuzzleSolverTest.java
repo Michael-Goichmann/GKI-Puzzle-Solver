@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PuzzleSolverTest {
-
 	@Test
 	void checkInputTest() {
 		Puzzle goal = new Puzzle(new int[][]{{1, 2, 3}, {8, 0, 4}, {7, 6, 5}});
@@ -24,10 +23,6 @@ class PuzzleSolverTest {
 		assertFalse(ps.checkInput(tooManyNumbers));
 		assertFalse(ps.checkInput(missingCommas));
 	}
-
-	/**
-	 * Example test case for correct input parsing (not yet implemented)
-	 */
 
 	@Test
 	void heuristicsTest(){
