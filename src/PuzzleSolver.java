@@ -9,26 +9,18 @@ public class PuzzleSolver {
 			start = parseInput(input);
 		}
 	}
-	
+
 	public boolean checkInput(String input) {
-		//TODO
-		// ...
-		if (input.length() != 17){
-			return false;
-		}
-
-		if (input.contains(" ")){
-			return false;
-		}
-
-		for (int i=0; i<9; i++){
-			if (!input.contains(Integer.toString(i))){
+		if(input.length() != 17) return false;
+		if(input.contains(" ")) return false;
+		for(int i = 0; i < 9; i++) {
+			if(!input.contains(String.valueOf(i))) {
 				return false;
 			}
 		}
 		return true;
 	}
-	
+
 	public Puzzle parseInput(String input) {
 		String[] numberAsString = input.split(",");
 
